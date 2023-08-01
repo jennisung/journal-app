@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My Journals</title>
+</head>
+<body>
+<h1>Welcome, <span th:text="${userName}"></span>!</h1>
+<h2>My Journal Entries</h2>
+<ul>
+  <li th:each="journal : ${journals}">
+    <p><strong>Date:</strong> <span th:text="${journal.date}"></span></p>
+    <p th:text="${journal.diary}"></p>
+    <hr>
+  </li>
+</ul>
+
+
+<form action="/addJournal" method="post">
+  <label for="date">Date:</label>
+  <input type="date" name="date" required />
+  <br>
+  <label for="diary">Diary Entry:</label>
+  <textarea name="diary" rows="4" cols="50" required></textarea>
+  <br>
+  <button type="submit">Add Entry</button>
+</form>
+</body>
+</html>
